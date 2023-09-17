@@ -1,5 +1,5 @@
-//go:build !linux && !darwin && !windows
-// +build !linux,!darwin,!windows
+//go:build !linux && !darwin && !windows && !wasm
+// +build !linux,!darwin,!windows,!wasm
 
 // Use and distribution licensed under the Apache license version 2.
 //

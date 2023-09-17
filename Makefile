@@ -14,3 +14,13 @@ fmtcheck:
 .PHONY: vet
 vet:
 	go vet ./...
+
+.PHONY: clean
+clean:
+	@rm ghwc ghwc.wasm 2> /dev/null || :
+
+ghwc:
+	go build -o ghwc cmd/ghwc/main.go
+
+ghwc.wasm:
+	GOOS=wasip1 GOARCH=wasm go build -o ghwc.wasm cmd/ghwc/main.go

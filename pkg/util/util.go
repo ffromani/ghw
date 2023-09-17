@@ -35,16 +35,15 @@ func SafeClose(c closer) {
 // could not be successfully converted to an integer. In any error, a warning
 // message is printed to STDERR and -1 is returned.
 func SafeIntFromFile(ctx *context.Context, path string) int {
-	msg := "failed to read int from file: %s\n"
 	buf, err := os.ReadFile(path)
 	if err != nil {
-		ctx.Warn(msg, err)
+		ctx.Warn("failed to read int from file: %s\n", err)
 		return -1
 	}
 	contents := strings.TrimSpace(string(buf))
 	res, err := strconv.Atoi(contents)
 	if err != nil {
-		ctx.Warn(msg, err)
+		ctx.Warn("failed to parse int from file: %s\n", err)
 		return -1
 	}
 	return res
